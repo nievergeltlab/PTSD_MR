@@ -240,7 +240,7 @@ f.z2b <- function(z, af, n)
     # z = imputed z statistics
     # af = allele frequency
     # n = sample size (effective)
-    se.b <- 1/sqrt(2* af * (1-af) * n)
+    se.b <- 1/sqrt(2* af * (1-af) * n + z^2)
     b <- z * se.b
     return(c(b, se.b))
 }
@@ -502,7 +502,7 @@ f.z2b <- function(z, af, n)
     # z = imputed z statistics
     # af = allele frequency
     # n = sample size (effective)
-    se.b <- 1/sqrt(2* af * (1-af) * n)
+    se.b <- 1/sqrt(2* af * (1-af) * n + z^2)
     b <- z * se.b
     return(c(b, se.b))
 }
