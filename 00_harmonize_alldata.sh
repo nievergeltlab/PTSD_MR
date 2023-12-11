@@ -309,7 +309,7 @@ write.table(output, "sumstats/RA_GWASmeta_European_v2.txt.gz.ssimp_allchr_ssimp.
  ptsd_dat <- fread('zcat ../eur_ptsd_pcs_v4_aug3_2021.fuma.gz',data.table=F)
  #ptsd_dat <- subset(ptsd_dat, !(Chromosome == 6 & Position >= 25000000 & Position <= 35000000))
  ptsd_dat$samplesize <- ptsd_dat$Weight  
- sed=3.09 #Give standard error for PTSD measure- This is for CAPS. Converted to Pseudo betas
+ sed=3.09 #Give standard error for PTSD measure. Choice is arbitrary for inference, but will affect scaling of beta. This value selected is for the SE of CAPS from the MRS. 
  ptsd_dat$BETA = ptsd_dat$Zscore * sed / sqrt(2*(ptsd_dat$Weight + ptsd_dat$Zscore^2)*ptsd_dat$Freq1*(1-ptsd_dat$Freq1))
  ptsd_dat$SE <- ptsd_dat$BETA / ptsd_dat$Zscore 
  ptsd_dat$A1 <- toupper(ptsd_dat$Allele1)
